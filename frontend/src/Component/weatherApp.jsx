@@ -13,6 +13,31 @@ const WeatherApp = () => {
   const [humidity, setHumidity] = useState("");
   const [pressure, setPressure] = useState("");
 
+  const getIconClass = (iconCode) => {
+    const iconMap = {
+      "01d": "wi-day-sunny",
+      "01n": "wi-night-clear",
+      "02d": "wi-day-cloudy",
+      "02n": "wi-night-alt-cloudy",
+      "03d": "wi-cloud",
+      "03n": "wi-cloud",
+      "04d": "wi-cloudy",
+      "04n": "wi-cloudy",
+      "09d": "wi-showers",
+      "09n": "wi-showers",
+      "10d": "wi-day-rain",
+      "10n": "wi-night-alt-rain",
+      "11d": "wi-thunderstorm",
+      "11n": "wi-thunderstorm",
+      "13d": "wi-snow",
+      "13n": "wi-snow",
+      "50d": "wi-fog",
+      "50n": "wi-fog",
+    };
+    return iconMap[iconCode] || "wi-na"; // Fallback icon
+  };
+  
+
   useEffect(() => {
     handleSearch();
   }, []);  // Runs once after the initial render
@@ -52,11 +77,12 @@ const WeatherApp = () => {
           <button onClick={handleSearch}>Search</button>
         </div>
         <div className="weather-info">
-          <img
+          {/* <img
             src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
             alt="Weather Icon"
             className="weather-icon"
-          />
+          /> */}
+          <i className={`wi ${getIconClass(icon)} weather-icon`}></i>
           <h2>{temperature}°C</h2>
           <div className="min_max">
             <p>Min Temp: {minTemp}°C</p>

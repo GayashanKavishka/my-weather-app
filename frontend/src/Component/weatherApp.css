@@ -1,4 +1,5 @@
 /* Overall Container */
+
 .weather-app-container {
   background-color: #f7f9f7;  /* Light greenish background for a clean look */
   color: #333;  /* Dark text color for contrast */
@@ -138,4 +139,13 @@ p {
   .min_max p {
     font-size: 14px;
   }
+}
+
+
+.weather-icon {
+  margin-top: 10px;
+  padding-top: 10px;
+  font-size: 80px; /* Adjust size as needed */
+  color: #40ff06; /* Match the app's theme */
+  margin-bottom: 20px;
 }
