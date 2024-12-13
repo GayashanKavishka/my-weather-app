@@ -1,13 +1,23 @@
-# Sample Dockerfile for NodeJS Apps
-
+# Use a specific Node.js base image
 FROM node:22.11.0
 
-WORKDIR /app/Backend
+# Set the working directory inside the container
+# WORKDIR /app
 
-COPY Backend/package*.json ./
+# Copy package.json and package-lock.json from the backend folder
+COPY backend/package*.json ./
 
+# Install production dependencies
 RUN npm install --production
 
+# Copy the entire backend folder into the container
+COPY backend ./backend
+
+# Set the working directory for your backend code
+WORKDIR /app/backend
+
+# Expose the port your backend server uses
 EXPOSE 3000
 
-CMD ["node", "start"]
+# Start the application
+CMD ["npm", "start"]
