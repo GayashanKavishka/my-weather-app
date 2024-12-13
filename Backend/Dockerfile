@@ -2,14 +2,12 @@
 
 FROM node:22.11.0
 
-WORKDIR /app
+WORKDIR /app/Backend
 
-COPY backend/package*.json ./
+COPY Backend/package*.json ./
 
 RUN npm install --production
 
-COPY backend/src ./src
-
 EXPOSE 3000
 
-CMD ["node", "src/app.js"]
+CMD ["node", "start"]
