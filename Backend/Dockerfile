@@ -5,16 +5,15 @@ FROM node:22.11.0
 # WORKDIR /app
 
 # Copy package.json and package-lock.json from the backend folder
-COPY backend/package*.json ./
+COPY package*.json ./
 
 # Install production dependencies
-RUN npm install --production
+RUN npm install 
 
 # Copy the entire backend folder into the container
-COPY backend ./backend
+COPY . .
 
 # Set the working directory for your backend code
-WORKDIR /app/backend
 
 # Expose the port your backend server uses
 EXPOSE 3000
